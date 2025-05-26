@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useRestaurants } from "../context/RestaurantContext.jsx";
 
 function AddRestaurant() {
+  const { updateRestaurants } = useRestaurants();
+
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -10,14 +13,20 @@ function AddRestaurant() {
   });
 
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setFormData({ ...formData, [name]: value });
+    const { name, value } = e.target;
+    setFormData((f) => ({ ...f, [name]: value }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     updateRestaurants(formData);
+    setFormData({
+      name: "",
+      address: "",
+      phone: "",
+      cuisine: "",
+      rating: "",
+    });
   };
 
   return (
@@ -73,6 +82,7 @@ function AddRestaurant() {
           name="rating"
           min="1"
           max="5"
+          step="0.1"
           value={formData.rating}
           onChange={handleChange}
           required

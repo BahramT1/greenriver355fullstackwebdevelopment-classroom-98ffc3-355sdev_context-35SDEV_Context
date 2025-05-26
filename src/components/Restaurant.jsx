@@ -11,3 +11,4 @@ function Restaurant({ restaurant: { name, address, phone, cuisine, rating } }) {
     </div>
   );
 }
+export default Restaurant;

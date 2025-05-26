@@ -1,12 +1,13 @@
-import RestaurantsContainer from "./components/RestaurantsContainer";
+import React from "react";
+import RestaurantsContainer from "./RestaurantsContainer";
 
 function RestaurantSection() {
   return (
     <section>
-      <RestaurantFilter />
+      <h2>Our Restaurants</h2>
       <RestaurantsContainer />
     </section>
   );
 }
 
-export default RestaurantSection
+export default RestaurantSection;
